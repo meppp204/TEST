@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"></html>
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-llyw{background-color:#c0c0c0;border-color:inherit;text-align:left;vertical-align:top}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"></meta>
+    <meta http-equiv="Expires" content="-1"></meta>
+    <meta http-equiv="Pragma" content="no-cache"></meta>
+    <meta http-equiv="Cache-Control" content="no-cache"></meta>
+
+
+    <title>광접속함체 QR코드</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="http://61.80.178.193/TEST/src/main/resources/templates/qrcode.js"></script>
+    <script src="http://61.80.178.193/TEST/src/main/resources/templates/vue-qrcode.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+    .title { font-size: 60px;}
+    .link { font-size: 40px;}
+</style>
+    <div id="test">
+        <H1 class="title">광접속함체 DB조회</H1>
+        <a class="link" href="http://61.80.178.193:10737/create">DB입력 페이지로 이동</a><br></br>
+
+        <input v-model="id" placeholder="QR생성할 ID입력"></input>
+        <!--<button v-on:click="makeqr">qr생성</button><br></br>
+        <canvas id="qr"></canvas><br></br>-->
+        <vue-qrcode value="Hello, World!" :options="{ width: 200 }"></vue-qrcode>
+        <table class="tg">
+            <thead>
+            <tr>
+                <th class="tg-llyw">ID</th>
+                <th class="tg-llyw">공사명</th>
+                <th class="tg-llyw">케이블명</th>
+                <th class="tg-llyw">접속번호</th>
+                <th class="tg-llyw">구간명</th>
+                <th class="tg-llyw">시공사</th>
+                <th class="tg-llyw">상위국</th>
+                <th class="tg-llyw">하위국</th>
+                <th class="tg-llyw">설치위치</th>
+                <th class="tg-llyw">감리</th>
+                <th class="tg-llyw">관리자</th>
+                <th class="tg-llyw">코어1</th>
+                <th class="tg-llyw">코어2</th>
+                <th class="tg-llyw">코어3</th>
+                <th class="tg-llyw">코어4</th>
+                <th class="tg-llyw">코어5</th>
+                <th class="tg-llyw">코어6</th>
+                <th class="tg-llyw">코어7</th>
+                <th class="tg-llyw">코어8</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${findlist}">
+                <td class="tg-0pky" th:text="${member.id}"></td>
+                <td class="tg-0pky" th:text="${member.gongsa}"></td>
+                <td class="tg-0pky" th:text="${member.cableName}"></td>
+                <td class="tg-0pky" th:text="${member.jubsok}"></td>
+                <td class="tg-0pky" th:text="${member.gugan}"></td>
+                <td class="tg-0pky" th:text="${member.sigong}"></td>
+                <td class="tg-0pky" th:text="${member.sangwiguk}"></td>
+                <td class="tg-0pky" th:text="${member.hawiguk}"></td>
+                <td class="tg-0pky" th:text="${member.sulchi}"></td>
+                <td class="tg-0pky" th:text="${member.gamri}"></td>
+                <td class="tg-0pky" th:text="${member.gwanri}"></td>
+                <td class="tg-0pky" th:text="${member.core1}"></td>
+                <td class="tg-0pky" th:text="${member.core2}"></td>
+                <td class="tg-0pky" th:text="${member.core3}"></td>
+                <td class="tg-0pky" th:text="${member.core4}"></td>
+                <td class="tg-0pky" th:text="${member.core5}"></td>
+                <td class="tg-0pky" th:text="${member.core6}"></td>
+                <td class="tg-0pky" th:text="${member.core7}"></td>
+                <td class="tg-0pky" th:text="${member.core8}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+<script>
+
+    const app = new Vue({
+        el: '#test',
+        data: {
+            id : "",
+            url : "http://61.80.178.193:10737/read?id=",
+
+        },
+    })
+
+    Vue.component(VueQrcode.name,  VueQrcode)
+
+</script>
+
+
+</body>
+</html>
+

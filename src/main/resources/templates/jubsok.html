@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+
+<html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>접속점정보</title>
+</head>
+<body>
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:20px;
+        overflow:hidden;padding:20px 20px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:20px;
+        font-weight:normal;overflow:hidden;padding:20px 20px;word-break:normal;}
+    .tg .tg-exqi{background-color:#9b9b9b;border-color:#000000;text-align:center;vertical-align:middle}
+    .tg .tg-c8qk{background-color:#9b9b9b;border-color:#000000;text-align:left;vertical-align:middle}
+    .tg .tg-vs2s{background-color:#9b9b9b;border-color:#000000;text-align:left;vertical-align:top}
+    .tg .tg-73oq{border-color:#000000;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+    <thead>
+    <tr>
+        <th class="tg-c8qk">공사명</th>
+        <th class="tg-73oq" colspan="2" th:text="${gongsa}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="tg-c8qk">케이블명</td>
+        <td class="tg-73oq" colspan="2" th:text="${cable}"></td>
+    </tr>
+    <tr>
+        <td class="tg-c8qk">접속점명</td>
+        <td class="tg-73oq" colspan="2" th:text="${jubsok}"></td>
+    </tr>
+    <tr>
+        <td class="tg-c8qk">구간명</td>
+        <td class="tg-73oq" colspan="2" th:text="${gugan}"></td>
+    </tr>
+    <tr>
+        <td class="tg-c8qk">시공사</td>
+        <td class="tg-73oq" colspan="2" th:text="${sigong}"></td>
+    </tr>
+    <tr>
+        <td class="tg-exqi" rowspan="3">제조사/제조번호</td>
+        <td class="tg-vs2s">상위국</td>
+        <td class="tg-vs2s">하위국</td>
+    </tr>
+    <tr>
+        <td class="tg-73oq" rowspan="2" th:text="${sangwiguk}"></td>
+        <td class="tg-73oq" rowspan="2" th:text="${hawiguk}"></td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+        <td class="tg-c8qk">설치연도</td>
+        <td class="tg-73oq" colspan="2" th:text="${sulchi}"></td>
+    </tr>
+    <tr>
+        <td class="tg-c8qk">감리원</td>
+        <td class="tg-73oq" colspan="2" th:text="${gamri}"></td>
+    </tr>
+    <tr>
+        <td class="tg-c8qk">관리기관</td>
+        <td class="tg-73oq" colspan="2" th:text="${gwanri}"></td>
+    </tr>
+    <tr>
+        <td class="tg-c8qk" rowspan="5">광코어연결내역</td>
+        <td class="tg-vs2s">상위국 연결코어</td>
+        <td class="tg-vs2s">하위국 연결코어</td>
+    </tr>
+    <tr>
+        <td class="tg-73oq" th:text="${core1}"></td>
+        <td class="tg-73oq" th:text="${core2}"></td>
+    </tr>
+    <tr>
+        <td class="tg-73oq" th:text="${core3}"></td>
+        <td class="tg-73oq" th:text="${core4}"></td>
+    </tr>
+    <tr>
+        <td class="tg-73oq" th:text="${core5}"></td>
+        <td class="tg-73oq" th:text="${core6}"></td>
+    </tr>
+    <tr>
+        <td class="tg-73oq" th:text="${core7}"></td>
+        <td class="tg-73oq" th:text="${core8}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

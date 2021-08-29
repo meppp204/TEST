@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+
+<html>
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>광접속함체 QR코드</title>
+</head>
+<body>
+<style type="text/css">
+    .title { font-size: 60px;}
+    .link { font-size: 40px;}
+</style>
+<div id="create">
+    <H1 class="title">광접속함체 DB입력</H1>
+    <a class="link" href="http://61.80.178.193:10737/findall">DB조회 페이지로 이동</a><br></br>
+
+    <input v-model="gongsa" placeholder="공사명"></input><br></br>
+    <input v-model="cableName" placeholder="케이블명"></input><br></br>
+    <input v-model="jubsok" placeholder="접속점명"></input><br></br>
+    <input v-model="gugan" placeholder="구간명"></input><br></br>
+    <input v-model="sigong" placeholder="시공사명"></input><br></br>
+    <input v-model="sangwiguk" placeholder="상위국"></input><br></br>
+    <input v-model="hawiguk" placeholder="하위국"></input><br></br>
+    <input v-model="sulchi" placeholder="설치위치"></input><br></br>
+    <input v-model="gamri" placeholder="감리"></input><br></br>
+    <input v-model="gwanri" placeholder="관리자명"></input><br></br>
+    <input v-model="core1" placeholder="코어1"></input><br></br>
+    <input v-model="core2" placeholder="코어2"></input><br></br>
+    <input v-model="core3" placeholder="코어3"></input><br></br>
+    <input v-model="core4" placeholder="코어4"></input><br></br>
+    <input v-model="core5" placeholder="코어5"></input><br></br>
+    <input v-model="core6" placeholder="코어6"></input><br></br>
+    <input v-model="core7" placeholder="코어7"></input><br></br>
+    <input v-model="core8" placeholder="코어8"></input><br></br>
+    <button v-on:click="post">DB입력</button><br></br>
+</div>
+<script>
+    const options = {
+        headers: {
+            'content-type' : 'application/json',
+            'x-api-key' : ''
+        }
+    }
+    const app = new Vue({
+        el: '#create',
+        data: {
+            url : "http://61.80.178.193:10737/read?id=1",
+            message : "",
+            gongsa : "",
+            cableName : "",
+            jubsok : "",
+            gugan : "",
+            sigong : "",
+            sangwiguk : "",
+            hawiguk : "",
+            sulchi : "",
+            gamri : "",
+            gwanri : "",
+            core1 : "",
+            core2 : "",
+            core3 : "",
+            core4 : "",
+            core5 : "",
+            core6 : "",
+            core7 : "",
+            core8 : "",
+        },
+        methods: {
+            reverseMessage: function () {
+                alert('Hello ' + this.name + '!')
+            },
+            post: function() {
+                axios.post('insert',
+                    {
+                        "gongsa" : this.gongsa,
+                        "cableName" : this.cableName,
+                        "jubsok" : this.jubsok,
+                        "gugan" : this.gugan,
+                        "sigong" : this.sigong,
+                        "sangwiguk" : this.sangwiguk,
+                        "hawiguk" : this.hawiguk,
+                        "sulchi" : this.sulchi,
+                        "gamri" : this.gamri,
+                        "gwanri" : this.gwanri,
+                        "core1" : this.core1,
+                        "core2" : this.core2,
+                        "core3" : this.core3,
+                        "core4" : this.core4,
+                        "core5" : this.core5,
+                        "core6" : this.core6,
+                        "core7" : this.core7,
+                        "core8" : this.core8,
+                    }, options
+                )
+                    .then(function(response) {
+                        alert(response+'DB입력완료')
+                    })
+                    .catch(function(error) {
+                        alert(error+'DB입력실패')
+                    });
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

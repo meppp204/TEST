@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"></meta>
+    <meta http-equiv="Expires" content="-1"></meta>
+    <meta http-equiv="Pragma" content="no-cache"></meta>
+    <meta http-equiv="Cache-Control" content="no-cache"></meta>
+
+
+    <title>테스트</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="test">
+    <!-- `greet`는 메소드 이름으로 아래에 정의되어 있습니다 -->
+    <h1>Hello {{ userName }}!!</h1>
+    <button v-on:click="reverseMessage">Greet</button><br></br>
+    <a v-bind:href="url">{{ name }}</a><br></br>
+    <input v-model="message" placeholder="여기를 수정해보세요"></input><br></br>
+    <p>메시지: {{ message }}</p><br></br>
+    <button v-on:click="post">get data</button><br></br>
+    <input v-model="gongsa" placeholder="공사명"></input><br></br>
+    <input v-model="cableName" placeholder="케이블명"></input><br></br>
+    <input v-model="jubsok" placeholder="접속점명"></input><br></br>
+    <input v-model="gugan" placeholder="구간명"></input><br></br>
+    <input v-model="sigong" placeholder="시공사명"></input><br></br>
+    <input v-model="sangwiguk" placeholder="상위국"></input><br></br>
+    <input v-model="hawiguk" placeholder="하위국"></input><br></br>
+    <input v-model="sulchi" placeholder="설치위치"></input><br></br>
+    <input v-model="gamri" placeholder="감리"></input><br></br>
+    <input v-model="gwanri" placeholder="관리자명"></input><br></br>
+    <input v-model="core1" placeholder="코어1"></input><br></br>
+    <input v-model="core2" placeholder="코어2"></input><br></br>
+    <input v-model="core3" placeholder="코어3"></input><br></br>
+    <input v-model="core4" placeholder="코어4"></input><br></br>
+    <input v-model="core5" placeholder="코어5"></input><br></br>
+    <input v-model="core6" placeholder="코어6"></input><br></br>
+    <input v-model="core7" placeholder="코어7"></input><br></br>
+    <input v-model="core8" placeholder="코어8"></input><br></br>
+
+</div>
+
+<script>
+    const options = {
+        headers: {
+            'content-type' : 'application/json',
+            'x-api-key' : ''
+        }
+    }
+    const app = new Vue({
+        el: '#test',
+        data: {
+                name: 'Vue.js',
+                userName : "minwoo",
+                url : "http://61.80.178.193:10737/read?id=1",
+                message : "",
+                gongsa : "",
+                cableName : "",
+                jubsok : "",
+                gugan : "",
+                sigong : "",
+                sangwiguk : "",
+                hawiguk : "",
+                sulchi : "",
+                gamri : "",
+                gwanri : "",
+                core1 : "",
+                core2 : "",
+                core3 : "",
+                core4 : "",
+                core5 : "",
+                core6 : "",
+                core7 : "",
+                core8 : "",
+        },
+        methods: {
+            reverseMessage: function () {
+                alert('Hello ' + this.name + '!')
+                },
+            post: function() {
+                axios.post('insert',
+                    {
+                        "gongsa" : this.gongsa,
+                        "cableName" : this.cableName,
+                        "jubsok" : this.jubsok,
+                        "gugan" : this.gugan,
+                        "sigong" : this.sigong,
+                        "sangwiguk" : this.sangwiguk,
+                        "hawiguk" : this.hawiguk,
+                        "sulchi" : this.sulchi,
+                        "gamri" : this.gamri,
+                        "gwanri" : this.gwanri,
+                        "core1" : this.core1,
+                        "core2" : this.core2,
+                        "core3" : this.core3,
+                        "core4" : this.core4,
+                        "core5" : this.core5,
+                        "core6" : this.core6,
+                        "core7" : this.core7,
+                        "core8" : this.core8,
+                    }, options
+                )
+                    .then(function(response) {
+                        alert(response + 'DB입력완료')
+                    })
+                    .catch(function(error) {
+                        alert(error + 'DB입력실패')
+                    });
+            }
+            }
+    })
+    </script>
+</body>
+</html>
